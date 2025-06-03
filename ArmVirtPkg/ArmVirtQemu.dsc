@@ -54,6 +54,15 @@
 !include ArmVirtPkg/ArmVirt.dsc.inc
 
 !include MdePkg/MdeLibs.dsc.inc
+[LibraryClasses.common.SEC]
+  PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
+  ExtractGuidedSectionLib|EmbeddedPkg/Library/PrePiExtractGuidedSectionLib/PrePiExtractGuidedSectionLib.inf
+  HobLib|EmbeddedPkg/Library/PrePiHobLib/PrePiHobLib.inf
+  # MemoryAllocationLib|EmbeddedPkg/Library/PrePiMemoryAllocationLib/PrePiMemoryAllocationLib.inf
+  PrePiHobListPointerLib|ArmPlatformPkg/Library/PrePiHobListPointerLib/PrePiHobListPointerLib.inf
+  # ArmVirtMemInfoLib|ArmVirtPkg/Library/QemuVirtMemInfoLib/QemuVirtMemInfoPeiLib.inf
+  MemoryInitPeiLib|ArmPlatformPkg/MemoryInitPei/MemoryInitPeiLib.inf
+  ArmVirtMemInfoLib|ArmVirtPkg/Library/QemuVirtMemInfoLib/QemuVirtMemInfoPeiLib.inf
 
 [LibraryClasses.common]
   ArmLib|ArmPkg/Library/ArmLib/ArmBaseLib.inf
@@ -103,7 +112,6 @@
   ArmPlatformLib|ArmPlatformPkg/Library/ArmPlatformLibNull/ArmPlatformLibNull.inf
 
 [LibraryClasses.common.PEIM]
-  ArmVirtMemInfoLib|ArmVirtPkg/Library/QemuVirtMemInfoLib/QemuVirtMemInfoPeiLib.inf
   ArmMonitorLib|ArmVirtPkg/Library/ArmVirtMonitorPeiLib/ArmVirtMonitorPeiLib.inf
   FdtLib|MdePkg/Library/BaseFdtLib/BaseFdtLib.inf
   Tpm2DeviceLib|SecurityPkg/Library/Tpm2DeviceLibDTpm/Tpm2DeviceLibDTpm.inf
@@ -332,11 +340,12 @@
   #
   # PEI Phase modules
   #
-  ArmPlatformPkg/Sec/Sec.inf
-  MdeModulePkg/Core/Pei/PeiMain.inf
-  ArmPlatformPkg/PlatformPei/PlatformPeim.inf
-  ArmVirtPkg/MemoryInitPei/MemoryInitPeim.inf
-  ArmPkg/Drivers/CpuPei/CpuPei.inf
+  # ArmPlatformPkg/Sec/Sec.inf
+  # MdeModulePkg/Core/Pei/PeiMain.inf
+  # ArmPlatformPkg/PlatformPei/PlatformPeim.inf
+  # ArmVirtPkg/MemoryInitPei/MemoryInitPeim.inf
+  # ArmPkg/Drivers/CpuPei/CpuPei.inf
+  ArmPlatformPkg/PeilessSec/PeilessSec.inf
 
 !if $(TPM2_ENABLE) == TRUE
   MdeModulePkg/Universal/PCD/Pei/Pcd.inf {
@@ -356,10 +365,10 @@
   }
 !endif
 
-  MdeModulePkg/Core/DxeIplPeim/DxeIpl.inf {
-    <LibraryClasses>
-      NULL|MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
-  }
+  # MdeModulePkg/Core/DxeIplPeim/DxeIpl.inf {
+  #   <LibraryClasses>
+  #     NULL|MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
+  # }
 
   #
   # DXE

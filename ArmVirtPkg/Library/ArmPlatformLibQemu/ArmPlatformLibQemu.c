@@ -62,3 +62,11 @@ ArmPlatformGetPlatformPpiList (
   *PpiListSize = 0;
   *PpiList     = NULL;
 }
+
+VOID
+ArmPlatformGetVirtualMemoryMap (
+  OUT ARM_MEMORY_REGION_DESCRIPTOR  **VirtualMemoryMap
+  )
+{
+  return;
+}

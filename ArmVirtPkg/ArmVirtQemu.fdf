@@ -104,12 +104,14 @@ READ_STATUS        = TRUE
 READ_LOCK_CAP      = TRUE
 READ_LOCK_STATUS   = TRUE
 
-  INF ArmPlatformPkg/Sec/Sec.inf
-  INF MdeModulePkg/Core/Pei/PeiMain.inf
-  INF ArmPlatformPkg/PlatformPei/PlatformPeim.inf
-  INF ArmVirtPkg/MemoryInitPei/MemoryInitPeim.inf
-  INF ArmPkg/Drivers/CpuPei/CpuPei.inf
-  INF MdeModulePkg/Core/DxeIplPeim/DxeIpl.inf
+  INF ArmPlatformPkg/PeilessSec/PeilessSec.inf
+
+  # INF ArmPlatformPkg/Sec/Sec.inf
+  # INF MdeModulePkg/Core/Pei/PeiMain.inf
+  # INF ArmPlatformPkg/PlatformPei/PlatformPeim.inf
+  # INF ArmVirtPkg/MemoryInitPei/MemoryInitPeim.inf
+  # INF ArmPkg/Drivers/CpuPei/CpuPei.inf
+  # INF MdeModulePkg/Core/DxeIplPeim/DxeIpl.inf
 
 !if $(TPM2_ENABLE) == TRUE
   INF MdeModulePkg/Universal/PCD/Pei/Pcd.inf
